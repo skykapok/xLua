@@ -36,6 +36,15 @@ MARK_AS_ADVANCED(XLUA_PROJECT_DIR)
 set(LUA_SRC_PATH lua-5.3.5/src)
 set(LUAJIT_SRC_PATH luajit-2.1.0b3/src)
 
+#begin sproto
+set (SPROTO_SRC
+    ../../sproto/sproto.c
+    ../../sproto/lsproto.c
+)
+list(APPEND THIRDPART_INC  ../../sproto)
+set (THIRDPART_SRC ${THIRDPART_SRC} ${SPROTO_SRC})
+#end sproto
+
 if (USING_LUAJIT)
 	
     if (APPLE AND NOT IOS AND NOT ANDROID)

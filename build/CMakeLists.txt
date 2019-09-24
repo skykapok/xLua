@@ -45,6 +45,23 @@ list(APPEND THIRDPART_INC  ../../sproto)
 set (THIRDPART_SRC ${THIRDPART_SRC} ${SPROTO_SRC})
 #end sproto
 
+#begin sconn
+set (SCONN_SRC
+    sconn/lsocket.c
+    sconn/lcrypt.c
+    sconn/rc4.c
+    sconn/lrc4.c
+)
+set_property(
+    SOURCE ${SCONN_SRC}
+    APPEND
+    PROPERTY COMPILE_DEFINITIONS
+    LUA_LIB
+)
+list(APPEND THIRDPART_INC  sconn)
+set (THIRDPART_SRC ${THIRDPART_SRC} ${SCONN_SRC})
+#end sconn
+
 if (USING_LUAJIT)
 	
     if (APPLE AND NOT IOS AND NOT ANDROID)

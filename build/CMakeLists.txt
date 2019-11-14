@@ -36,16 +36,24 @@ MARK_AS_ADVANCED(XLUA_PROJECT_DIR)
 set(LUA_SRC_PATH lua-5.3.5/src)
 set(LUAJIT_SRC_PATH luajit-2.1.0b3/src)
 
-#begin sproto
+#begin third_party
 set (SPROTO_SRC
     ../../sproto/sproto.c
     ../../sproto/lsproto.c
 )
 list(APPEND THIRDPART_INC  ../../sproto)
 set (THIRDPART_SRC ${THIRDPART_SRC} ${SPROTO_SRC})
-#end sproto
 
-#begin sconn
+set (LPEG_SRC
+    lpeg/lpcap.c
+    lpeg/lpcode.c
+    lpeg/lpprint.c
+    lpeg/lptree.c
+    lpeg/lpvm.c
+)
+list(APPEND THIRDPART_INC  lpeg)
+set (THIRDPART_SRC ${THIRDPART_SRC} ${LPEG_SRC})
+
 set (SCONN_SRC
     sconn/lsocket.c
     sconn/lcrypt.c
@@ -60,7 +68,7 @@ set_property(
 )
 list(APPEND THIRDPART_INC  sconn)
 set (THIRDPART_SRC ${THIRDPART_SRC} ${SCONN_SRC})
-#end sconn
+#end third_party
 
 if (USING_LUAJIT)
 	

@@ -51,6 +51,12 @@ set (LPEG_SRC
     lpeg/lptree.c
     lpeg/lpvm.c
 )
+set_property(
+    SOURCE ${LPEG_SRC}
+    APPEND
+    PROPERTY COMPILE_DEFINITIONS
+    LUA_LIB
+)
 list(APPEND THIRDPART_INC  lpeg)
 set (THIRDPART_SRC ${THIRDPART_SRC} ${LPEG_SRC})
 

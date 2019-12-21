@@ -87,6 +87,16 @@ set_property(
 )
 list(APPEND THIRDPART_INC  sconn)
 set (THIRDPART_SRC ${THIRDPART_SRC} ${SCONN_SRC})
+
+set (RAPIDJSON_SRC lua-rapidjson/source/rapidjson.cpp)
+set_property(
+    SOURCE ${RAPIDJSON_SRC}
+    APPEND
+    PROPERTY COMPILE_DEFINITIONS
+    LUA_LIB
+)
+list(APPEND THIRDPART_INC  lua-rapidjson/include)
+set (THIRDPART_SRC ${THIRDPART_SRC} ${RAPIDJSON_SRC})
 #end third_party
 
 if (USING_LUAJIT)

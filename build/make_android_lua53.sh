@@ -22,6 +22,7 @@ function build() {
     cmake --build ${BUILD_PATH} --config Release
     mkdir -p plugin_lua53/Plugins/Android/libs/${ABI}/
     cp ${BUILD_PATH}/libxlua.so plugin_lua53/Plugins/Android/libs/${ABI}/libxlua.so
+    cp ${BUILD_PATH}/libxlua.so ../Assets/Plugins/Android/libs/${ABI}/libxlua.so
 }
 
 build android-16 armeabi-v7a arm-linux-androideabi-4.9

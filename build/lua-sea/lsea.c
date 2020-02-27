@@ -80,20 +80,19 @@ lnew_shape(lua_State *L) {
 	matrix_identity(&p->mat);
 
 	p->type = (unsigned int)luaL_checkinteger(L, 1);
-	p->id = (unsigned int)luaL_checkinteger(L, 2);
 	p->dirty = 0;
 
 	switch (p->type)
 	{
 	case SEA_RECT:
-		p->rect.width = (unsigned short)luaL_checkinteger(L, 3);
-		p->rect.height = (unsigned short)luaL_checkinteger(L, 4);
+		p->rect.width = (unsigned short)luaL_checkinteger(L, 2);
+		p->rect.height = (unsigned short)luaL_checkinteger(L, 3);
 		unsigned int bound = p->rect.width;
 		if (bound < p->rect.height) bound = p->rect.height;
 		p->bound2 = bound * bound;
 		break;
 	case SEA_CIRCLE:
-		p->circle.radius = (unsigned int)luaL_checkinteger(L, 3);
+		p->circle.radius = (unsigned int)luaL_checkinteger(L, 2);
 		p->bound2 = p->circle.radius * p->circle.radius;
 		break;
 	default:
@@ -111,7 +110,7 @@ lupdate_shape(lua_State *L) {
 	struct srt srt;
 	p->srt.offx = luaL_checknumber(L, 2);
 	p->srt.offy = luaL_checknumber(L, 3);
-	p->srt.rot = luaL_checknumber(L, 4) * 2048 / M_PI;
+	p->srt.rot = luaL_checknumber(L, 4) * 2048 / M_PI; 
 	p->srt.scale = luaL_checknumber(L, 5) * 1024;
 	p->dirty = 1;
 
@@ -164,7 +163,7 @@ lbd(lua_State *L) {
 	return 8;
 }
 
-LUAMOD_API int
+int
 luaopen_sea_c(lua_State *L) {
 	//luaL_checkversion(L);
 	luaL_Reg l[] = {

@@ -14,7 +14,6 @@ struct shape {
 	struct {
 		unsigned int dirty : 1;
 		unsigned int type : 7;
-		unsigned int id : 24;
 	};
 	unsigned int bound2;
 	union {
